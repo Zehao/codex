@@ -31,8 +31,13 @@ CLAUDE.md
 .claude/
 
 # Generated packages/artifacts
+/bin/
 dist/
 build/
 out/
 *.tgz
 coverage/
+
+# Local Codex debug runtime. This directory may contain API keys.
+/.debug-codex-home/
+/debug-codex-home/

@@ -11,7 +11,39 @@
 
 原文中的 npm、Homebrew、DotSlash、TUI 安装方式面向官方 Codex CLI 分发，当前 fork 不再作为主路径保留。Windows 支持、npm 发布、SDK 发布、Bazel 发布工程也已从主路径移除。
 
+## 构建 app-server
+
+根目录提供 `build.sh`，用于构建 `codex-app-server` 并把二进制复制到根目录 `bin/`：
+
+```bash
+./build.sh        # release
+./build.sh debug  # debug
+```
+
+输出产物：
+
+```bash
+bin/codex-app-server
+```
+
+Cargo 原始产物仍在：
+
+```bash
+codex-rs/target/release/codex-app-server
+codex-rs/target/debug/codex-app-server
+```
+
+`bin/` 是本地构建产物目录，已加入 `.gitignore`。
+
 ## 启动 app-server
+
+构建后可以直接运行根目录产物：
+
+```bash
+./bin/codex-app-server --listen ws://127.0.0.1:48879
+```
+
+也可以从源码运行：
 
 ```bash
 cd codex-rs
@@ -23,6 +55,32 @@ cargo run -p codex-app-server --bin codex-app-server -- --listen ws://127.0.0.1:
 - `--listen stdio://`：适合子进程方式嵌入。
 - `--listen ws://127.0.0.1:4500`：适合本地客户端调试。
 - `--listen unix://` 或 `unix:///path/to/socket`：适合同机 daemon-like 集成。
+
+## 一键启动 Web 调试环境
+
+根目录提供 `debug.sh`，用于同时启动 app-server 和 `frontend/` 中的 JSON-RPC Web 调试台：
+
+```bash
+./debug.sh
+```
+
+默认地址：
+
+```bash
+app-server: ws://127.0.0.1:48879
+frontend:   http://127.0.0.1:5173
+```
+
+默认目录：
+
+```bash
+project cwd: ./debug-project
+CODEX_HOME:  ./.debug-codex-home
+```
+
+`debug-project/` 是专用测试项目目录。app-server 会以该目录作为 cwd，前端 `thread/start` 默认也使用该目录，避免调试时默认读写仓库根目录。
+
+`.debug-codex-home/` 是调试专用 Codex home，已整体加入 `.gitignore`，可以安全存放本地 `auth.json`、`config.toml`、session rollout 和 sqlite state。更多说明见 [web-debugger.md](web-debugger.md)。
 
 ## 根 justfile
 

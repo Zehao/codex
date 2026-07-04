@@ -8,6 +8,7 @@
 - [retention-policy.md](retention-policy.md)：保留/删除边界，以及第一轮清理结果。
 - [development.md](development.md)：构建、启动、验证和二开建议。
 - [app-server-api.md](app-server-api.md)：客户端连接 app-server 时优先关注的 API 面。
+- [web-debugger.md](web-debugger.md)：本地 JSON-RPC Web 调试台、`debug.sh`、`.debug-codex-home` 和页面模块说明。
 - [configuration.md](configuration.md)：配置、认证、requirements 和 managed hooks。
 - [agent-customization.md](agent-customization.md)：AGENTS.md、skills、hooks 和客户端命令设计。
 - [security-and-execution.md](security-and-execution.md)：sandbox、approval、exec policy 和执行能力边界。
