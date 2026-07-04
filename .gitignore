@@ -1,94 +1,38 @@
-# deps
-# Node.js dependencies
-node_modules
-.pnpm-store
-.pnpm-debug.log
+# Rust
+/target/
+/codex-rs/target/
+**/*.rs.bk
 
-# Keep pnpm-lock.yaml
-!pnpm-lock.yaml
+# Local environment
+.env
+.env.*
+!.env.example
+.venv/
+.direnv/
 
-# build
-dist/
-bazel-*
-user.bazelrc
-build/
-out/
-storybook-static/
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+*~
+.DS_Store
+Thumbs.db
 
-# ignore README for publishing
-codex-cli/README.md
-
-# ignore Nix derivation results
-result
-
-# editor
+# Editor/user-local files
 .vscode/
 .idea/
 .history/
 .zed/
-*.swp
-*~
-
-# cli tools
-CLAUDE.md
-.claude/
-AGENTS.override.md
-
-# caches
-.cache/
-.turbo/
-.parcel-cache/
-.eslintcache
-.nyc_output/
-.jest/
-*.tsbuildinfo
-
-# logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# env
-.env*
-!.env.example
-.venv/
-
-# package
-*.tgz
-
-# ci
-.vercel/
-.netlify/
-
-# patches
-apply_patch/
-
-# coverage
-coverage/
-
-# personal files
 personal/
 
-# os
-.DS_Store
-Thumbs.db
-Icon?
-.Spotlight-V100/
+# Agent/user overrides
+AGENTS.override.md
+CLAUDE.md
+.claude/
 
-# Unwanted package managers
-.yarn/
-yarn.lock
-
-# release
-package.json-e
-session.ts-e
-CHANGELOG.ignore.md
-
-# nix related
-.direnv
-.envrc
-
-# Python bytecode files
-__pycache__/
-*.pyc
+# Generated packages/artifacts
+dist/
+build/
+out/
+*.tgz
+coverage/
